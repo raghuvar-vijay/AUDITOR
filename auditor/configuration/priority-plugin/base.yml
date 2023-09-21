@@ -1,5 +1,6 @@
-addr: "localhost"
-port: 8000
+auditor:
+  addr: "localhost"
+  port: 8000
 components:
   NumCPUs: "HEPSPEC"
 min_priority: 1
