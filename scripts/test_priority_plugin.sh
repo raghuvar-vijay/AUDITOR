@@ -156,22 +156,22 @@ function fill_auditor() {
 
 function test_priority_plugin_fullspread() {
 	sleep 1
-	docker exec -e RUST_LOG=debug auditor-slurm-1 /auditor-priority-plugin plugin_config_fullspread.yaml
-	sleep 2
+	docker exec -e RUST_LOG=debug auditor-slurm-1 timeout 40s /auditor-priority-plugin plugin_config_fullspread.yaml
+	sleep 10
 
 	docker exec auditor-slurm-1 /usr/bin/scontrol show Partition=part1 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" != "47041" ]; then exit 1; fi }
 	docker exec auditor-slurm-1 /usr/bin/scontrol show Partition=part2 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" != "48348" ]; then exit 1; fi }
 	docker exec auditor-slurm-1 /usr/bin/scontrol show Partition=part3 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" != "65335" ]; then exit 1; fi }
 	docker exec auditor-slurm-1 /usr/bin/scontrol show Partition=part4 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" !=  "1634" ]; then exit 1; fi }
 	docker exec auditor-slurm-1 /usr/bin/scontrol show Partition=part6 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" !=     "1" ]; then exit 1; fi }
-
+	
 	sleep 2
 }
 
 function test_priority_plugin_scaledbysum() {
 	sleep 1
-	docker exec -e RUST_LOG=debug auditor-slurm-1 /auditor-priority-plugin plugin_config_scaledbysum.yaml
-	sleep 2
+	docker exec -e RUST_LOG=debug auditor-slurm-1 timeout 40s /auditor-priority-plugin plugin_config_scaledbysum.yaml
+	sleep 10
 
 	docker exec auditor-slurm-1 /usr/bin/scontrol show Partition=part1 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" != "18931" ]; then exit 1; fi }
 	docker exec auditor-slurm-1 /usr/bin/scontrol show Partition=part2 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" != "19457" ]; then exit 1; fi }
