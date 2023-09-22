@@ -273,7 +273,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let cloned_request_metrics = request_metrics.clone();
 
-    let enable_prometheus = config.prometheus.enable.clone();
+    let enable_prometheus = config.prometheus.enable;
 
     tokio::spawn(async move {
         let configuration = config.clone();

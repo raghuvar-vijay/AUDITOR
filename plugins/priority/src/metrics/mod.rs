@@ -53,7 +53,7 @@ impl PrometheusExporterConfig {
         &self,
         resources: &HashMap<String, f64>,
         priorities: &HashMap<String, i64>,
-        metrics: &Vec<PrometheusMetricsOptions>,
+        metrics: &[PrometheusMetricsOptions],
     ) -> Result<(), anyhow::Error> {
         for metric in metrics.iter() {
             match metric {
@@ -68,7 +68,7 @@ impl PrometheusExporterConfig {
                     for (priority, value) in priorities {
                         self.priority_metric
                             .with_label_values(&[priority])
-                            .set(*value as i64);
+                            .set(*value);
                     }
                 }
             };
