@@ -5,6 +5,7 @@ set -eo pipefail
 # Docker
 DOCKER_COMPOSE_FILE=${DOCKER_COMPOSE_FILE:="containers/docker-centos7-slurm/docker-compose.yml"}
 DOCKER_PROJECT_DIR=${DOCKER_PROJECT_DIR:="."}
+COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME:="auditor"}
 # Plugin build
 RELEASE_MODE=${RELEASE_MODE:=false}
 TARGET_ARCH=${TARGET_ARCH:="x86_64-unknown-linux-musl"}
@@ -15,6 +16,7 @@ function stop_container() {
 	docker compose \
 		--file $DOCKER_COMPOSE_FILE \
 		--project-directory=$DOCKER_PROJECT_DIR \
+		--project-name="$COMPOSE_PROJECT_NAME" \
 		down
 }
 
@@ -22,16 +24,19 @@ function start_container() {
 	docker compose \
 		--file $DOCKER_COMPOSE_FILE \
 		--project-directory=$DOCKER_PROJECT_DIR \
+		--project-name="$COMPOSE_PROJECT_NAME" \
 		up -d
 	# Copy slurm.conf to container
 	docker compose \
 		--file $DOCKER_COMPOSE_FILE \
 		--project-directory=$DOCKER_PROJECT_DIR \
+		--project-name="$COMPOSE_PROJECT_NAME" \
 		cp ./containers/docker-centos7-slurm/slurm.conf slurm:/etc/slurm/slurm.conf
 	# Copy priority plugin to container
 	docker compose \
 		--file $DOCKER_COMPOSE_FILE \
 		--project-directory=$DOCKER_PROJECT_DIR \
+		--project-name="$COMPOSE_PROJECT_NAME" \
 		cp \
 		./target/x86_64-unknown-linux-musl/debug/auditor-priority-plugin \
 		slurm:/auditor-priority-plugin
@@ -39,25 +44,27 @@ function start_container() {
 	docker compose \
 		--file $DOCKER_COMPOSE_FILE \
 		--project-directory=$DOCKER_PROJECT_DIR \
+		--project-name="$COMPOSE_PROJECT_NAME" \
 		cp ./containers/docker-centos7-slurm/plugin_config_fullspread.yaml slurm:/plugin_config_fullspread.yaml
 	docker compose \
 		--file $DOCKER_COMPOSE_FILE \
 		--project-directory=$DOCKER_PROJECT_DIR \
+		--project-name="$COMPOSE_PROJECT_NAME" \
 		cp ./containers/docker-centos7-slurm/plugin_config_scaledbysum.yaml slurm:/plugin_config_scaledbysum.yaml
 
-	docker exec auditor-slurm-1 chown slurm:slurm /auditor-priority-plugin
-	docker exec auditor-slurm-1 mkdir /priority_plugin_logs
-	docker exec auditor-slurm-1 chown slurm:slurm /priority_plugin_logs
+	docker exec "${COMPOSE_PROJECT_NAME}-slurm-1" chown slurm:slurm /auditor-priority-plugin
+	docker exec "${COMPOSE_PROJECT_NAME}-slurm-1" mkdir /priority_plugin_logs
+	docker exec "${COMPOSE_PROJECT_NAME}-slurm-1" chown slurm:slurm /priority_plugin_logs
 
 	COUNTER=0
-	until docker exec auditor-slurm-1 scontrol ping; do
+	until docker exec "${COMPOSE_PROJECT_NAME}-slurm-1" scontrol ping; do
 		>&2 echo "Slurm container is still unavailable - sleeping"
 		let COUNTER=COUNTER+1
 		if [ "$COUNTER" -gt "30" ]; then
 			echo >&2 "Docker container did not come up in time."
 			echo >&2 "Docker logs:"
-			docker logs auditor-slurm-1
-			docker exec auditor-slurm-1 cat /var/log/slurm/slurmctld.log
+			docker logs "${COMPOSE_PROJECT_NAME}-slurm-1"
+			docker exec "${COMPOSE_PROJECT_NAME}-slurm-1" cat /var/log/slurm/slurmctld.log
 			stop_container
 			echo >&2 "Exiting."
 			exit 1
@@ -156,28 +163,28 @@ function fill_auditor() {
 
 function test_priority_plugin_fullspread() {
 	sleep 1
-	docker exec -e RUST_LOG=debug auditor-slurm-1 timeout 40s /auditor-priority-plugin plugin_config_fullspread.yaml
+	docker exec -e RUST_LOG=debug "${COMPOSE_PROJECT_NAME}-slurm-1" timeout 40s /auditor-priority-plugin plugin_config_fullspread.yaml
 	sleep 10
 
-	docker exec auditor-slurm-1 /usr/bin/scontrol show Partition=part1 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" != "47041" ]; then exit 1; fi }
-	docker exec auditor-slurm-1 /usr/bin/scontrol show Partition=part2 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" != "48348" ]; then exit 1; fi }
-	docker exec auditor-slurm-1 /usr/bin/scontrol show Partition=part3 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" != "65335" ]; then exit 1; fi }
-	docker exec auditor-slurm-1 /usr/bin/scontrol show Partition=part4 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" !=  "1634" ]; then exit 1; fi }
-	docker exec auditor-slurm-1 /usr/bin/scontrol show Partition=part6 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" !=     "1" ]; then exit 1; fi }
+	docker exec "${COMPOSE_PROJECT_NAME}-slurm-1" /usr/bin/scontrol show Partition=part1 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" != "47041" ]; then exit 1; fi }
+	docker exec "${COMPOSE_PROJECT_NAME}-slurm-1" /usr/bin/scontrol show Partition=part2 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" != "48348" ]; then exit 1; fi }
+	docker exec "${COMPOSE_PROJECT_NAME}-slurm-1" /usr/bin/scontrol show Partition=part3 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" != "65335" ]; then exit 1; fi }
+	docker exec "${COMPOSE_PROJECT_NAME}-slurm-1" /usr/bin/scontrol show Partition=part4 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" !=  "1634" ]; then exit 1; fi }
+	docker exec "${COMPOSE_PROJECT_NAME}-slurm-1" /usr/bin/scontrol show Partition=part6 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" !=     "1" ]; then exit 1; fi }
 	
 	sleep 2
 }
 
 function test_priority_plugin_scaledbysum() {
 	sleep 1
-	docker exec -e RUST_LOG=debug auditor-slurm-1 timeout 40s /auditor-priority-plugin plugin_config_scaledbysum.yaml
+	docker exec -e RUST_LOG=debug "${COMPOSE_PROJECT_NAME}-slurm-1" timeout 40s /auditor-priority-plugin plugin_config_scaledbysum.yaml
 	sleep 10
 
-	docker exec auditor-slurm-1 /usr/bin/scontrol show Partition=part1 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" != "18931" ]; then exit 1; fi }
-	docker exec auditor-slurm-1 /usr/bin/scontrol show Partition=part2 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" != "19457" ]; then exit 1; fi }
-	docker exec auditor-slurm-1 /usr/bin/scontrol show Partition=part3 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" != "26292" ]; then exit 1; fi }
-	docker exec auditor-slurm-1 /usr/bin/scontrol show Partition=part4 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" !=   "658" ]; then exit 1; fi }
-	docker exec auditor-slurm-1 /usr/bin/scontrol show Partition=part6 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" !=     "1" ]; then exit 1; fi }
+	docker exec "${COMPOSE_PROJECT_NAME}-slurm-1" /usr/bin/scontrol show Partition=part1 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" != "18931" ]; then exit 1; fi }
+	docker exec "${COMPOSE_PROJECT_NAME}-slurm-1" /usr/bin/scontrol show Partition=part2 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" != "19457" ]; then exit 1; fi }
+	docker exec "${COMPOSE_PROJECT_NAME}-slurm-1" /usr/bin/scontrol show Partition=part3 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" != "26292" ]; then exit 1; fi }
+	docker exec "${COMPOSE_PROJECT_NAME}-slurm-1" /usr/bin/scontrol show Partition=part4 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" !=   "658" ]; then exit 1; fi }
+	docker exec "${COMPOSE_PROJECT_NAME}-slurm-1" /usr/bin/scontrol show Partition=part6 | grep PriorityJobFactor | awk '{print $1}' | awk -F "=" '{print $2}' | { read prio; if [ "$prio" !=     "1" ]; then exit 1; fi }
 
 	sleep 2
 }
