@@ -156,6 +156,14 @@ and this project adheres to <a class="reference external" href="https://semver.o
 </section>
 <section id="changed">
 <h3>Changed<a class="headerlink" href="#changed" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Dependencies: Update regex from 1.9.5 to 1.9.6 (<a class="reference external" href="https://github.com/QuantumDancer">&#64;QuantumDancer</a>)</p></li>
+<li><p>Dependencies: Update reqwest from 0.11.20 to 0.11.22 (<a class="reference external" href="https://github.com/QuantumDancer">&#64;QuantumDancer</a>)</p></li>
+<li><p>Dependencies: Update sqlx from 0.7.1 to 0.7.2 (<a class="reference external" href="https://github.com/QuantumDancer">&#64;QuantumDancer</a>)</p></li>
+<li><p>Dependencies: Update thiserror from 1.0.48 to 1.0.49 (<a class="reference external" href="https://github.com/QuantumDancer">&#64;QuantumDancer</a>)</p></li>
+<li><p>Dependencies: Update time from 0.3.28 to 0.3.29 (<a class="reference external" href="https://github.com/QuantumDancer">&#64;QuantumDancer</a>)</p></li>
+<li><p>Dependencies: Update tracing-actix-web from 0.7.6 to 0.7.7 (<a class="reference external" href="https://github.com/QuantumDancer">&#64;QuantumDancer</a>)</p></li>
+</ul>
 </section>
 <section id="removed">
 <h3>Removed<a class="headerlink" href="#removed" title="Link to this heading"></a></h3>
@@ -169,6 +177,7 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <li><p>pyauditor + Apel plugin + HTCondor collector: Support for Python 3.6 and 3.7 has been dropped (<a class="reference external" href="https://github.com/QuantumDancer">&#64;QuantumDancer</a>)</p></li>
 <li><p>Apel plugin: <code class="docutils literal notranslate"><span class="pre">cpu_time_unit</span></code> has to be present in the config file. See <a class="reference external" href="https://github.com/ALU-Schumacher/AUDITOR/blob/main/media/website/content/_index.md#apel-plugin">Documentation</a> (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Auditor: Updating a non-existent record now returns an HTTP 404 error instead of HTTP 400 error (<a class="reference external" href="https://github.com/QuantumDancer">&#64;QuantumDancer</a>)</p></li>
+<li><p>Docker containers: The <code class="docutils literal notranslate"><span class="pre">main</span></code> tag was replaced with the <code class="docutils literal notranslate"><span class="pre">edge</span></code> tag (<a class="reference external" href="https://github.com/QuantumDancer">&#64;QuantumDancer</a>)</p></li>
 <li><p>Dependencies: Update pyo3 from 0.15.2 to 0.19 and pyo3-asyncio from 0.15 to 0.19 (<a class="reference external" href="https://github.com/QuantumDancer">&#64;QuantumDancer</a>)</p>
 <ul>
 <li><p>When creating a record with <code class="docutils literal notranslate"><span class="pre">pyauditor</span></code>, the timezone of the datetime object now needs to be converted to <code class="docutils literal notranslate"><span class="pre">datetime.timezone.utc</span></code> instead of <code class="docutils literal notranslate"><span class="pre">pytz.utc</span></code></p></li>
