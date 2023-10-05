@@ -75,6 +75,17 @@
             <div class="toc-sticky">
                 
                 <div class="toc-item">
+                    <a class="subtext" href="https://alu-schumacher.github.io/AUDITOR/migration/#from-0-2-0-to-unreleased">From 0.2.0 to unreleased</a>
+                </div>
+                
+                
+                <div class="toc-item-child">
+                    <a class="subtext" href="https://alu-schumacher.github.io/AUDITOR/migration/#development"><small>- Development</small></a>
+                </div>
+                
+                
+                
+                <div class="toc-item">
                     <a class="subtext" href="https://alu-schumacher.github.io/AUDITOR/migration/#from-0-1-0-to-0-2-0">From 0.1.0 to 0.2.0</a>
                 </div>
                 
@@ -92,11 +103,15 @@
                 </div>
                 
                 <div class="toc-item-child">
+                    <a class="subtext" href="https://alu-schumacher.github.io/AUDITOR/migration/#docker-containers"><small>- Docker containers</small></a>
+                </div>
+                
+                <div class="toc-item-child">
                     <a class="subtext" href="https://alu-schumacher.github.io/AUDITOR/migration/#htcondor-plugin"><small>- HTCondor plugin</small></a>
                 </div>
                 
                 <div class="toc-item-child">
-                    <a class="subtext" href="https://alu-schumacher.github.io/AUDITOR/migration/#development"><small>- Development</small></a>
+                    <a class="subtext" href="https://alu-schumacher.github.io/AUDITOR/migration/#development-1"><small>- Development</small></a>
                 </div>
                 
                 
@@ -109,6 +124,13 @@
         <div class="content text">
             
 <div class="heading-text">Migration Guide</div>
+<h1 id="from-0-2-0-to-unreleased">From 0.2.0 to unreleased</h1>
+<h2 id="development">Development</h2>
+<h3 id="update-to-sqlx-0-7-2">Update to <a href="https://github.com/launchbadge/sqlx/blob/main/sqlx-cli/README.md">sqlx 0.7.2</a></h3>
+<p>Use this command to update the sqlx-cli to 0.7.2</p>
+<ul>
+<li><code>cargo install --version=0.7.2 sqlx-cli --no-default-features --features postgres,rustls,sqlite</code></li>
+</ul>
 <h1 id="from-0-1-0-to-0-2-0">From 0.1.0 to 0.2.0</h1>
 <h2 id="apel-plugin">Apel plugin</h2>
 <ul>
@@ -163,11 +185,15 @@ when creating a new record:
 <ul>
 <li>Updating a non-existent record now returns an HTTP 404 error instead of HTTP 400 error</li>
 </ul>
+<h2 id="docker-containers">Docker containers</h2>
+<ul>
+<li>The <code>main</code> tag was replaced with the <code>edge</code> tag. In addition, we also now offer docker tags corresponding to releases, i.e., use the tag <code>0.2.0</code> for this release.</li>
+</ul>
 <h2 id="htcondor-plugin">HTCondor plugin</h2>
 <ul>
 <li>Support for Python 3.6 and Python 3.7 has been dropped. Please move to a newer version of python.</li>
 </ul>
-<h2 id="development">Development</h2>
+<h2 id="development-1">Development</h2>
 <h3 id="update-to-sqlx-0-7-1">Update to <a href="https://github.com/launchbadge/sqlx/blob/main/sqlx-cli/README.md">sqlx 0.7.1</a></h3>
 <p>Use this command to update the sqlx-cli to 0.7.1</p>
 <ul>
