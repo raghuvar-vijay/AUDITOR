@@ -675,7 +675,9 @@ impl AuditorClientBuilder {
     /// * `port` - Port of the Auditor instance.
     #[must_use]
     pub fn address<T: AsRef<str>>(mut self, address: &T, port: u16) -> Self {
-        self.address = format!("http://{}:{}", address.as_ref(), port);
+        //self.address = format!("http://{}:{}", address.as_ref(), port);
+        //self
+        self.address = format!("{}:{}", address.as_ref(), port);
         self
     }
 
@@ -766,7 +768,7 @@ impl AuditorClientBuilder {
     /// * [`ClientError::InvalidTimeInterval`] - If the timeout duration is less than zero.
     /// * [`ClientError::ReqwestError`] - If there was an error building the HTTP client.
     pub fn build(self) -> Result<AuditorClient, ClientError> {
-        let client = match self.tls_config {
+        let client = match self.tls_config.clone() {
             Some(tls_config) => reqwest::ClientBuilder::new()
                 .identity(tls_config.identity.expect(
                     "Error while setting up the client identity using client cert and key pem",
@@ -784,8 +786,12 @@ impl AuditorClientBuilder {
                 .build()?,
         };
 
+        let scheme = if self.tls_config.is_some() { "https" } else { "http" };
+        let address = format!("{}://{}", scheme, self.address);
+
+
         Ok(AuditorClient {
-            address: self.address,
+            address,
             client,
         })
     }
