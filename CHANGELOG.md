@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 
 ### Added
+- AUDITOR: Implement streaming of records for advanced queries ([@raghuvar-vijay](https://github.com/raghuvar-vijay))
 
 ### Changed
 - Dependencies: Update cryptography from 44.0.1 to 44.0.2 ([@dirksammel](https://github.com/dirksammel))
