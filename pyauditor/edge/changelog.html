@@ -219,18 +219,32 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <h2><a class="reference external" href="https://github.com/alu-schumacher/AUDITOR/compare/v0.8.0...HEAD">Unreleased</a><a class="headerlink" href="#unreleased" title="Link to this heading"></a></h2>
 <section id="breaking-changes">
 <h3>Breaking changes<a class="headerlink" href="#breaking-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>AUDITOR: Auditor application config field <code class="docutils literal notranslate"><span class="pre">addr</span></code> is changed to a list for supporting IPv4/IPv6 dualstack operation (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+</ul>
 </section>
 <section id="security">
 <h3>Security<a class="headerlink" href="#security" title="Link to this heading"></a></h3>
 </section>
 <section id="added">
 <h3>Added<a class="headerlink" href="#added" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Apel plugin: Add –dry-run option to publish- and republish commands (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>AUDITOR: Implement streaming of records for advanced queries (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>AUDITOR: Add strict deserialization to make the query fail if the query string contains unknown fields (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>AUDITOR: Improve error messages for invalid query parameters (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>AUDITOR: Handle 404 errors for unspecified routes (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+</ul>
 </section>
 <section id="changed">
 <h3>Changed<a class="headerlink" href="#changed" title="Link to this heading"></a></h3>
 <ul class="simple">
+<li><p>Dependencies: Update config from 0.13.4 to 0.15.9 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Dependencies: Update cryptography from 44.0.1 to 44.0.2 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Dependencies: Update pytest from 8.3.4 to 8.3.5 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Dependencies: Update ring from 0.7.11 to 0.7.13 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Dependencies: Update ruff from 0.9.9 to 0.10.0 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Dependencies: Update setuptools from 75.8.2 to 76.0.0 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 </ul>
 </section>
 <section id="removed">
