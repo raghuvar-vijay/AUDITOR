@@ -275,6 +275,11 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <section id="added">
 <h3>Added<a class="headerlink" href="#added" title="Link to this heading"></a></h3>
 <ul class="simple">
+<li><p>AUDITOR: Add config fields to specify the meta key namespace for prometheus metrics (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>AUDITOR: Add <code class="docutils literal notranslate"><span class="pre">ignore_record_exists_error</span></code> config option to treat record exists error as a warning (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>AUDITOR: Add archival functionality to archive old records from db to parquet files (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>AUDITOR: Add parquet restoration scripts that restores archived records in parquet file to AUDTIOR db (Rust and python script) (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Docs: Add documentation for archival configs and usage of parquet restoration scripts (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
 <li><p>Apel plugin: Add option for list of site_meta_fields in the config (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>AUDITOR: Add role based access control service (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
 <li><p>Docs: Add TLS certificate generation guide (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
@@ -289,11 +294,13 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <ul class="simple">
 <li><p>APEL plugin: Fix bug in republish script when list of records is empty (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>AUDITOR: Change the meta query field as an array (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update argo-ams-library from 0.6.2 to 1.0.0 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Dependencies: Update build from 1.2.2.post1 to 1.3.0 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Dependencies: Update cryptography from 44.0.3 to 45.0.5 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Dependencies: Update mypy from 1.15.0 to 1.17.1 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Dependencies: Update pydantic from 2.11.4 to 2.11.7 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Dependencies: Update pytest from 8.3.5 to 8.4.1 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Dependencies: Update pytest-cov from 6.1.1 to 6.2.1 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Dependencies: Update ruff from 0.11.9 to 0.12.7 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Dependencies: Update setuptools from 80.4.0 to 80.9.0 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Dependencies: Update types-pyyaml from 6.0.12.20250402 to 6.0.12.20250516 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
