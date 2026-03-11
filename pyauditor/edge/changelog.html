@@ -291,37 +291,72 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <ul class="simple">
 <li><p>Apel plugin: Add total reported numbers to log of republish script (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>CI/CD: Add tests for Python 3.14 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>HTCondor collector: Add CompletionDate to query (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Utilization-report: Add Utilization report (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
 </ul>
 </section>
 <section id="changed">
 <h3>Changed<a class="headerlink" href="#changed" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>AUDITOR: Fix clippy and cargo deny issues (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>AUDITOR: Prevent the archive service from blocking server startup (<a class="reference external" href="https://github.com/rkleinem">&#64;rkleinem</a>)</p></li>
+<li><p>Archival: Fix validation query logic (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Archival: Increase record deletion rate after archival from postgres (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Apel plugin: Remove <code class="docutils literal notranslate"><span class="pre">MessageType</span></code> enum (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>CI/CD: Switch to official ruff git action (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>CI/CD: Catch error when killing processes in tests (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>CI/CD: Improve htcondor-collector workflow (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>CI/CD: Set Python version in build_pyauditor workflows (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>CI/CD: Move RPM build of python packages to Alma9 container (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Priority-plugin: Fix clippy issues (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Website: Update auditor_overview image with kubernetes collector (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
 <li><p>Dependencies: Update actions/checkout from 5 to 6 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
-<li><p>Dependencies: Update actions/download-artifact from 6 to 7 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
-<li><p>Dependencies: Update actions/upload-artifact from 5 to 6 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
-<li><p>Dependencies: Update arrow from 57.0.0 to 57.3.0 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
-<li><p>Dependencies: Update arrow-array from 57.0.0 to 57.3.0 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update actions/download-artifact from 6 to 8 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Dependencies: Update actions/upload-artifact from 5 to 7 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Dependencies: Update actix-tls from 3.4.0 to 3.5.0 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update actix-web from 4.11.0 to 4.13.0 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update anyhow from 1.0.100 to 1.0.102 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update arrow from 57.0.0 to 58.0.0 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update arrow-array from 57.0.0 to 58.0.0 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
 <li><p>Dependencies: Update black from 25.9.0 to 25.11.0 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Dependencies: Update build from 1.3.0 to 1.4.0 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
-<li><p>Dependencies: Update crate-ci/typos from 1.38.1 to 1.43.4 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Dependencies: Update casbin from 2.15.0 to 2.20.0 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update config from 0.15.18 to 0.15.19 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update chrono from 0.4.42 to 0.4.44 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update crate-ci/typos from 1.38.1 to 1.44.0 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Dependencies: Update cryptography from 46.0.3 to 46.0.5 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Dependencies: Update docker/build-push-action from 6 to 7 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Dependencies: Update docker/login-action from 3 to 4 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Dependencies: Update docker/metadata-action from 5 to 6 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Dependencies: Update docker/setup-buildx-action from 3 to 4 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Dependencies: Update futures from 0.3.31 to 0.3.32 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update futures-util from 0.3.31 to 0.3.32 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update jiff from 0.2.18 to 0.2.21 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update k8s-openapi from 0.21.1 to 0.27.1 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Dependencies: Update kube from 0.88.1 to 3.0.1 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Dependencies: Update mypy from 1.18.2 to 1.19.1 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Dependencies: Update parquet from 57.0.0 to 58.0.0 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
 <li><p>Dependencies: Update pydantic from 2.12.3 to 2.12.5 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Dependencies: Update pyo3 from 0.24.1 to 0.27.1 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Dependencies: Update pyo3-async-runtimes from 0.24.0 to 0.27.0 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Dependencies: Update quickcheck from 1.0.3 to 1.1.0 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update quickcheck_macros from 1.1.0 to 1.2.0 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update regex from 1.12.2 to 1.12.3 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
 <li><p>Dependencies: Update reqwest from 0.12.24 to 0.12.28 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
-<li><p>Dependencies: Update ruff from 0.14.2 to 0.15.0 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
-<li><p>Dependencies: Update serde_json from 1.0.145 to 1.0.147 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Dependencies: Update ruff from 0.14.2 to 0.15.5 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Dependencies: Update rustls from 0.23.34 to 0.23.37 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update serde_json from 1.0.145 to 1.0.149 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>), (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update serde_with from 3.15.1 to 3.17.0 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
 <li><p>Dependencies: Update setuptools from 80.9.0 to 82.0.0 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
 <li><p>Dependencies: Update shalzz/zola-deploy-action from 0.21.0 to 0.22.1 (<a class="reference external" href="https://github.com/dirksammel">&#64;dirksammel</a>)</p></li>
+<li><p>Dependencies: Update shell-words from 1.1.0 to 1.1.1 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update thiserror from 2.0.17 to 2.0.18 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update tokio from 1.48.0 to 1.49.0 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
 <li><p>Dependencies: Update tokio-cron-scheduler from 0.15.0 to 0.15.1 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update tracing from 0.1.41 to 0.1.44 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update tracing-actix-web from 0.7.19 to 0.7.21 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update tracing-subscriber from 0.3.20 to 0.3.22 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
+<li><p>Dependencies: Update uuid from 1.18.1 to 1.21.0 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
 <li><p>Dependencies: Update x509-parser from 0.18.0 to 0.18.1 (<a class="reference external" href="https://github.com/raghuvar-vijay">&#64;raghuvar-vijay</a>)</p></li>
 </ul>
 </section>
