@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Breaking changes
 
 ### Security
+- [RUSTSEC-2026-0037]: Removed because advisory was not encountered ([@raghuvar-vijay](https://github.com/raghuvar-vijay))
+- [RUSTSEC-2024-0436]: Removed because advisory was not encountered ([@raghuvar-vijay](https://github.com/raghuvar-vijay))
+- [RUSTSEC-2024-0384]: Removed because advisory was not encountered ([@raghuvar-vijay](https://github.com/raghuvar-vijay))
 
 ### Added
 - Apel plugin: Send sync message during republishing ([@dirksammel](https://github.com/dirksammel))

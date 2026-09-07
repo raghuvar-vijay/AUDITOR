@@ -44,10 +44,7 @@ yanked = "warn"
 # output a note when they are encountered.
 ignore = [
     #"RUSTSEC-0000-0000",
-    "RUSTSEC-2026-0037",
     "RUSTSEC-2024-0437",
-    "RUSTSEC-2024-0384",
-    "RUSTSEC-2024-0436",
     "RUSTSEC-2025-0141",
 ]
 # Threshold for security vulnerabilities, any vulnerability with a CVSS score
